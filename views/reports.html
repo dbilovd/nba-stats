@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>NBA Stats App</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							clifford: '#da373d',
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body class="min-h-full">
+		<div class="bg-white border-b border-gray-200">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between items-center h-16">
+					<div class="flex-shrink-0 flex items-center">
+						<h1 class="text-lg font-bold leading-tight text-gray-900">
+							NBA Stats App
+						</h1>
+					</div>
+					<div class="sm:-my-px sm:ml-6 sm:flex sm:space-x-8 h-auto md:h-full">
+						<a 
+							href="/"
+							class="hidden md:inline-flex border-indigo-500 text-gray-900 items-center px-1 pt-1 border-b-2 text-sm font-medium" aria-current="page"
+						>
+							Home
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main>
+      <div>
+        <div class="my-12 max-w-7xl mx-auto">
+          <header>
+            <div class="px-4 sm:px-6 lg:px-8">
+              <h1 class="text-2xl font-semibold leading-tight text-gray-900">
+                Average Stats Per Player
+              </h1>
+            </div>
+          </header>
+
+          <div class="px-4 sm:px-6 lg:px-8">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+                <tr>
+                  <th scope="col" class="p-3 text-left text-sm font-semibold text-gray-900">
+                    Player
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                  >
+                    Games
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                  >
+                    Points
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                  >
+                    Rebounds
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Assists
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Steals
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Blocks
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Turnovers
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Fouls
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    MinutesPlayed
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+                
+                {{range .Stats}}
+                  <tr>
+                    <td class="whitespace-nowrap p-3 text-left text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.PlayerID}} - {{.PlayerName}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Games}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Points}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Rebounds}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Assists}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Steals}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Blocks}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Turnovers}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Fouls}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.MinutesPlayed}}
+                      </p>
+                    </td>
+                  </tr>
+                {{end}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="my-12 max-w-7xl mx-auto">
+          <header>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h1 class="text-2xl font-semibold leading-tight text-gray-900">
+                Average Stats Per Team
+              </h1>
+            </div>
+          </header>
+
+          <div class="px-4 sm:px-6 lg:px-8">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+                <tr>
+                  <th scope="col" class="p-3 text-left text-sm font-semibold text-gray-900">
+                    Team
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                  >
+                    Points
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                  >
+                    Rebounds
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Assists
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Steals
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Blocks
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Turnovers
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    Fouls
+                  </th>
+                  <th
+                    scope="col"
+                    class="hidden p-3 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                  >
+                    MinutesPlayed
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+                
+                {{range .TeamStats}}
+                  <tr>
+                    <td class="whitespace-nowrap p-3 text-left text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.ID}} - {{.TeamName}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Points}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Rebounds}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Assists}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Steals}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Blocks}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Turnovers}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.Fouls}}
+                      </p>
+                    </td>
+                    <td class="whitespace-nowrap p-3 text-center text-sm font-medium">
+                      <p class="text-sm font-semibold leading-6 text-gray-900 flex items-center">
+                        {{.MinutesPlayed}}
+                      </p>
+                    </td>
+                  </tr>
+                {{end}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+		</main>
+	</body>
+</html>
